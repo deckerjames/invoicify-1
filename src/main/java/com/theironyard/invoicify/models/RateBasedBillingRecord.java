@@ -5,37 +5,38 @@ import javax.persistence.Entity;
 @Entity
 public class RateBasedBillingRecord extends BillingRecord {
 
-	private double rate;
-	
-	private double quantity;
-	
-	public RateBasedBillingRecord() {}
-	
-	public RateBasedBillingRecord(double rate, double quantity, String description, User createdBy, Company client) {
-		super(description, createdBy, client);
-		this.rate = rate;
-		this.quantity = quantity;
-	}
-	
-	@Override
-	public double getTotal() {
-		return rate * quantity;
-	}
+    private double rate;
 
-	public double getRate() {
-		return rate;
-	}
+    private double quantity;
 
-	public void setRate(double rate) {
-		this.rate = rate;
-	}
+    public RateBasedBillingRecord() {
+    }
 
-	public double getQuantity() {
-		return quantity;
-	}
+    public RateBasedBillingRecord(double rate, double quantity, String description, User createdBy, Company client) {
+        super(description, createdBy, client);
+        this.rate = rate;
+        this.quantity = quantity;
+    }
 
-	public void setQuantity(double quantity) {
-		this.quantity = quantity;
-	}
+    @Override
+    public double getTotal() {
+        return rate * quantity;
+    }
+
+    public double getRate() {
+        return rate;
+    }
+
+    public void setRate(double rate) {
+        this.rate = rate;
+    }
+
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
+    }
 
 }

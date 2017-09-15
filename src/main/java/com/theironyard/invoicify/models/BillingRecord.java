@@ -13,81 +13,85 @@ import javax.persistence.OneToOne;
 @Entity
 public abstract class BillingRecord {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-	@ManyToOne
-	private User createdBy;
-	
-	private Date createdOn;
-	
-	private String description;
-	
-	@OneToOne(mappedBy="billingRecord")
-	private InvoiceLineItem lineItem;
-	
-	@ManyToOne
-	private Company client;
-	
-	public BillingRecord() {}
-	
-	public BillingRecord(String description, User createdBy, Company client) {
-		long now = Calendar.getInstance().getTimeInMillis();
-		createdOn = new Date(now);
-		this.createdBy = createdBy;
-		this.description = description;
-		this.client = client;
-	}
-	
-	public abstract double getTotal();
+    @ManyToOne
+    private User createdBy;
 
-	public Long getId() {
-		return id;
-	}
+    private Date createdOn;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    private String description;
 
-	public User getCreatedBy() {
-		return createdBy;
-	}
+    @OneToOne(mappedBy = "billingRecord")
+    private InvoiceLineItem lineItem;
 
-	public void setCreatedBy(User createdBy) {
-		this.createdBy = createdBy;
-	}
+    @ManyToOne
+    private Company client;
 
-	public Date getCreatedOn() {
-		return createdOn;
-	}
+    public BillingRecord() {
+        long now = Calendar.getInstance().getTimeInMillis();
+        createdOn = new Date(now);
+    }
 
-	public void setCreatedOn(Date createdOn) {
-		this.createdOn = createdOn;
-	}
+    public BillingRecord(String description, User createdBy, Company client) {
+        this();
+        long now = Calendar.getInstance().getTimeInMillis();
+        createdOn = new Date(now);
+        this.createdBy = createdBy;
+        this.description = description;
+        this.client = client;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public abstract double getTotal();
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public InvoiceLineItem getLineItem() {
-		return lineItem;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setLineItem(InvoiceLineItem lineItem) {
-		this.lineItem = lineItem;
-	}
+    public User getCreatedBy() {
+        return createdBy;
+    }
 
-	public Company getClient() {
-		return client;
-	}
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
+    }
 
-	public void setClient(Company client) {
-		this.client = client;
-	}
-	
+    public Date getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public InvoiceLineItem getLineItem() {
+        return lineItem;
+    }
+
+    public void setLineItem(InvoiceLineItem lineItem) {
+        this.lineItem = lineItem;
+    }
+
+    public Company getClient() {
+        return client;
+    }
+
+    public void setClient(Company client) {
+        this.client = client;
+    }
+
 }
