@@ -17,13 +17,13 @@ public class InvoiceControllerTests {
 	private Authentication authentication;
 	private User user;
 	
-	@Before
-	public void setup() {
-		user = new User();
-		authentication = mock(Authentication.class);
-		when(authentication.getPrincipal()).thenReturn(user);
-		controller = new InvoiceController();
-	}
+//	@Before
+//	public void setup() {
+//		user = new User();
+//		authentication = mock(Authentication.class);
+//		when(authentication.getPrincipal()).thenReturn(user);
+//		controller = new InvoiceController();
+//	}
 
 	@Test
 	public void test_list() {
