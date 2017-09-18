@@ -71,12 +71,12 @@ public class Invoice {
 		this.invoiceNumber = invoiceNumber;
 	}
 
-    public List<InvoiceLineItem> getLineItems() {
-        return lineItems;
-    }
+	public List<InvoiceLineItem> getLineItems() {
+		return lineItems;
+	}
 
-    public void setLineItems(List<InvoiceLineItem> lineItems) {
-        this.lineItems = lineItems;
-    }
+	public void setLineItems(List<InvoiceLineItem> lineItems) {
+		this.lineItems = lineItems;
+	}
 	
 }

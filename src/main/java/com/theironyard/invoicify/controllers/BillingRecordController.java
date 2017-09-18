@@ -25,6 +25,7 @@ public class BillingRecordController {
 		ModelAndView mv = new ModelAndView("billing-records/list");
 		mv.addObject("records", recordRepository.findAll());
 		mv.addObject("companies", companyRepository.findAll());
+		
 		return mv;
 	}
 	

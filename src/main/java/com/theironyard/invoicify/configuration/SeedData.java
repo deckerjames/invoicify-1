@@ -25,17 +25,17 @@ public class SeedData {
 		Company ajax = companyRepository.save(new Company("AJAX Ltd."));
 		Company lomax = companyRepository.save(new Company("Lomax Brothers, LLC"));
 		
-		recordRepository.save(new FlatFeeBillingRecord(300, "Faxes", clerk, ajax));
-		recordRepository.save(new FlatFeeBillingRecord(1.75, "Socks", clerk, ajax));
-		recordRepository.save(new FlatFeeBillingRecord(500, "Paper", clerk, lomax));
-		recordRepository.save(new FlatFeeBillingRecord(72.33, "Stockings", clerk, lomax));
-		recordRepository.save(new FlatFeeBillingRecord(142.99, "Paint", admin, lomax));
+		recordRepository.save(new FlatFeeBillingRecord(450, "Guitar Strings", clerk, lomax));
+		recordRepository.save(new FlatFeeBillingRecord(22, "Picks", clerk, ajax));
+		recordRepository.save(new FlatFeeBillingRecord(6981, "Wizard Amp", clerk, lomax));
+		recordRepository.save(new FlatFeeBillingRecord(999, "Monster Cables", clerk, ajax));
+		recordRepository.save(new FlatFeeBillingRecord(1.05, "Snickers Bar", admin, lomax));
 		
-		recordRepository.save(new RateBasedBillingRecord(500, 3.5, "Legal services", clerk, ajax));
-		recordRepository.save(new RateBasedBillingRecord(150, 2.5, "Painting", clerk, ajax));
-		recordRepository.save(new RateBasedBillingRecord(100, 4.25, "House cleaning", clerk, ajax));
-		recordRepository.save(new RateBasedBillingRecord(700, 8, "Palm reading", admin, lomax));
-		recordRepository.save(new RateBasedBillingRecord(1.57, 25, "Show shining", clerk, lomax));
+		recordRepository.save(new RateBasedBillingRecord(29, 666, "Beauty Beast", admin, ajax));
+		recordRepository.save(new RateBasedBillingRecord(99, 48.59, "80s Metal", clerk, ajax));
+		recordRepository.save(new RateBasedBillingRecord(28.95, 3, "Speakers", admin, ajax));
+		recordRepository.save(new RateBasedBillingRecord(9008, 8847, "Crapinsteiner", admin, lomax));
+		recordRepository.save(new RateBasedBillingRecord(47, 43.47, "Sausage", clerk, ajax));
 	}
 
 }

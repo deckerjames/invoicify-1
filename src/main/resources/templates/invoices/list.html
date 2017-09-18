@@ -6,35 +6,32 @@
 </head>
 <body>
 
-	<div>Hello, {{ user.username }}</div>
+	{{> common/_navigation }}
 
 	<h1>Invoices</h1>
-	<br>
-
 
 	<table>
 		<thead>
 			<tr>
-				<th>Invoice</th>
+				<th>Created on</th>
+				<th>Created by</th>
 				<th>Company</th>
-				<th>CreatedBy</th>
-				<th>CreatedOn</th>
+				<th>Invoice Number</th>
 			</tr>
 		</thead>
 		<tbody>
 			{{#invoices}}
 			<tr>
-				<td>{{ invoiceNumber }}</td>
-				<td>{{ company.name }}</td>
-				<td>{{ createdBy.username }}</td>
-				<td>{{ createdOn }}</td>
+				<td>{{createdOn}}</td>
+				<td>{{createdBy.username}}</td>
+				<td>{{company.name}}</td>
+				<td>{{invoiceNumber}}</td>
 			</tr>
 			{{/invoices}}
 		</tbody>
 	</table>
 
-	<br>
-	<br>
-	<a href="/invoices/new">New Invoice</a>
+	<a href="/invoices/new">Create</a>
+
 </body>
 </html>

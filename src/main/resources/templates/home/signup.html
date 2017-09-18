@@ -6,19 +6,19 @@
 </head>
 <body>
 
-{{#errorMessage}}
-  <div>{{ errorMessage }}</div>
-{{/errorMessage}}
+	{{>common/_navigation}} {{#errorMessage}}
+	<div>{{ errorMessage }}</div>
+	{{/errorMessage}}
 
-<form method="post" action="/signup">
-  <input type="text" name="username" required>
-  <br>
-  <input type="password" name="password" required>
-  <br>
-  <input type="hidden" name="{{ _csrf.parameterName }}" value="{{ _csrf.token }}">
-  <br>
-  <button>Sign up!</button>
-</form>
+	<h3>Sign up with Username and Password</h3>
+
+	<form method="post" action="/signup">
+		<input type="text" name="username" required placeholder="Username">
+		<br> <input type="password" name="password" required
+			placeholder="Password"> <br> <input type="hidden"
+			name="{{ _csrf.parameterName }}" value="{{ _csrf.token }}"> <br>
+		<button>Sign up!</button>
+	</form>
 
 </body>
 </html>

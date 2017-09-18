@@ -1,5 +1,7 @@
 package com.theironyard.invoicify.controllers;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -14,10 +16,10 @@ import com.theironyard.invoicify.repositories.UserRepository;
 @Controller
 @RequestMapping("/")
 public class HomeController {
-	
+
 	private UserRepository userRepository;
 	private PasswordEncoder encoder;
-	
+
 	public HomeController(UserRepository userRepository, PasswordEncoder encoder) {
 		this.userRepository = userRepository;
 		this.encoder = encoder;
@@ -28,11 +30,16 @@ public class HomeController {
 		return "home/default";
 	}
 	
+	@GetMapping("login-page")
+	public String login() {
+		return "home/login-page";
+	}
+
 	@GetMapping("signup")
 	public String signup() {
 		return "home/signup";
 	}
-	
+
 	@PostMapping("signup")
 	public ModelAndView handleSignup(User user) {
 		// TODO THIS IS REALLY DUMB; NEEDS REFACTORING
@@ -43,14 +50,14 @@ public class HomeController {
 		ModelAndView mv = new ModelAndView();
 		try {
 			userRepository.save(user);
-			mv.setViewName("redirect:/login");
+			mv.setViewName("redirect:/login-page");
 		} catch (DataIntegrityViolationException dive) {
 			mv.setViewName("home/signup");
 			mv.addObject("errorMessage", "Cannot signup with that username");
 		}
 		return mv;
 	}
-	
+
 }
 
 

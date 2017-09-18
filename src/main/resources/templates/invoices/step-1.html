@@ -2,23 +2,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Select a client</title>
+<title>Invoices - select a client</title>
 </head>
 <body>
 
-<h1>Select a client</h1>
+	{{> common/_navigation }}
 
-<form action="/invoices/new" method="post">
-	<select name="clientId" required>
-	<option value="">Choose one...</option>
-		${{ #companies }}
-		<option value="{{ id }}">  {{ name }} </option>
-		{{ /companies }} 
-	</select>
-	<button>Choose some billing records</button>
-	<input type="hidden" name="{{ _csrf.parameterName }}" value="{{ _csrf.token }}">
-	<br>
-	<br>
-</form>
+	<h1>Invoices - Select a Client</h1>
+
+	<form method="post" action="/invoices/new">
+		<select name="clientId" required>
+			<option value="">Select a client</option> {{#companies}}
+			<option value={{id}}>{{name}}</option> {{/companies}}
+		</select> <input type="hidden" name="{{_csrf.parameterName}}"
+			value="{{_csrf.token}}">
+		<button>Choose</button>
+	</form>
+
 </body>
 </html>

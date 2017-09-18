@@ -2,7 +2,6 @@ package com.theironyard.invoicify.controllers;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,25 +13,26 @@ import com.theironyard.invoicify.repositories.BillingRecordRepository;
 import com.theironyard.invoicify.repositories.CompanyRepository;
 
 @Controller
-@RequestMapping("/billing-records/flat-fees")
+@RequestMapping("/billing-records/flat-fee")
 public class FlatFeeBillingRecordController {
-	
-	private BillingRecordRepository recordRepository;
-	private CompanyRepository companyRepository;
 
-	public FlatFeeBillingRecordController(BillingRecordRepository recordRepository, CompanyRepository companyRepository) {
-		this.recordRepository = recordRepository;
+	private BillingRecordRepository billingRecordRepository;
+	private CompanyRepository companyRepository;
+	
+	public FlatFeeBillingRecordController(BillingRecordRepository billingRecordRepository, CompanyRepository companyRepository) {
+		this.billingRecordRepository = billingRecordRepository;
 		this.companyRepository = companyRepository;
 	}
-
+	
 	@PostMapping("")
 	public ModelAndView create(FlatFeeBillingRecord record, long clientId, Authentication auth) {
-	    User user = (User) auth.getPrincipal();
-	    Company client = companyRepository.findOne(clientId);
-	    record.setClient(client);
-	    record.setCreatedBy(user);
-	    recordRepository.save(record);
-            return new ModelAndView("redirect:/billing-records");
+		User user = (User) auth.getPrincipal();
+		Company client = companyRepository.findOne(clientId);
+		record.setClient(client);
+		record.setCreatedBy(user);
+		billingRecordRepository.save(record);
+		
+		return new ModelAndView("redirect:/billing-records");
 	}
 	
 }

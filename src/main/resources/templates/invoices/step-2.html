@@ -2,14 +2,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Select billing records</title>
+<title>Invoices - select invoice #</title>
 </head>
 <body>
+	{{> common/_navigation }}
 
-	<h1>Choose some billing records</h1>
+	<h1>Invoices - Invoice #</h1>
 
-	<form action="/invoices/create" method="post">
-		<input type="text" name="invoiceNumber" placeholder="invoice number" required>
+	{{#errorMessage}}
+	<div>{{ errorMessage }}</div>
+	{{/errorMessage}}
+	<br>
+
+	<form method="post" action="/invoices/create">
+		<input type="text" name="invoiceNumber" required>
 
 		<table>
 			<thead>
@@ -26,10 +32,9 @@
 				</tr>
 			</thead>
 			<tbody>
-				{{#records}}
+				{{#billingRecords}}
 				<tr>
-					<td>
-						<input type="checkbox" value="{{ id }}" name="recordIds">
+					<td><input type="checkbox" value="{{id}}" name="recordIds">
 					</td>
 					<td>{{ createdOn }}</td>
 					<td>{{ createdBy.username }}</td>
@@ -40,14 +45,15 @@
 					<td>{{#quantity}}{{ quantity }}{{/quantity}}</td>
 					<td>${{ total }}</td>
 				</tr>
-				{{/records}}
+				{{/billingRecords}}
 			</tbody>
 		</table>
 
-		<button>Create the invoice</button>
-
-		<input type="hidden" name="{{ _csrf.parameterName }}" value="{{ _csrf.token }}"> 
-		<input type="hidden" name="clientId" value="{{ clientId }}"> 
+		<input type="hidden" name="{{_csrf.parameterName}}"
+			value="{{_csrf.token}}"> <input type="hidden" name="clientId"
+			value="{{clientId}}">
+		<button>Choose</button>
 	</form>
+
 </body>
 </html>
